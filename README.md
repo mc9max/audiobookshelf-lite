@@ -1,6 +1,6 @@
 # Audiobookshelf on Railway
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.com/deploy/audiobookshelf?utm_campaign=audiobookshelf-lite)
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.com/deploy/audiobookshelf-2?utm_campaign=audiobookshelf-lite)
 
 Self-hosted audiobook and podcast server. Audiobookshelf turns your audiobook collection into a beautiful streaming library — track progress across devices, manage podcasts with auto-downloads, and transcode on the fly. One click deploys it on Railway with zero configuration.
 
