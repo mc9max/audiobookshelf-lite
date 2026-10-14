@@ -8,7 +8,7 @@ Upstream: [advplyr/audiobookshelf](https://github.com/advplyr/audiobookshelf) (G
 
 ## Deploy and Host
 
-Click **Deploy on Railway** above. The deploy form is empty — there is nothing to configure. Railway provisions a 1 GB volume, starts the service, and assigns a public HTTPS URL. Open the URL and complete the web-based initial setup to create your admin user, then add your first library.
+Click **Deploy on Railway** above. The deploy form is empty — there is nothing to configure. Railway provisions a 1 GB volume, starts the service, and assigns a public HTTPS URL. Open the URL — the app lives at the `/audiobookshelf` path (e.g. `https://<your-domain>/audiobookshelf`) — and complete the web-based initial setup to create your admin user, then add your first library.
 
 ## Why Deploy
 

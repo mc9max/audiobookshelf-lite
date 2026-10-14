@@ -26,12 +26,14 @@ FROM ghcr.io/advplyr/audiobookshelf:2.37.1@sha256:581d68b2a6fc7ebf58d81c878a9f38
 
 USER root
 
-#   * Upstream defaults to serving the client under ROUTER_BASE_PATH
-#     "/audiobookshelf" — the wrapper sets ROUTER_BASE_PATH=/ so the app
-#     serves from the domain root (and the "/" healthcheck hits the app).
+#   * Upstream serves the client under ROUTER_BASE_PATH "/audiobookshelf"
+#     (default) — the client bundle has that base path baked in, so it MUST
+#     NOT be overridden: setting ROUTER_BASE_PATH=/ makes the HTML shell
+#     load but every /audiobookshelf/_nuxt/* asset 404s (page stuck on
+#     "Loading..."). The app lives at https://<domain>/audiobookshelf and
+#     the healthcheck hits that path.
 ENV CONFIG_PATH=/data/config
 ENV METADATA_PATH=/data/metadata
-ENV ROUTER_BASE_PATH=/
 
 COPY --chmod=0755 docker-entrypoint.sh /usr/local/bin/railway-entrypoint.sh
 
