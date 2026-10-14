@@ -7,8 +7,9 @@ set -x
 : "${CONFIG_PATH:=/data/config}"
 : "${METADATA_PATH:=/data/metadata}"
 
-echo "ENTRYPOINT: PORT=$PORT CONFIG_PATH=$CONFIG_PATH METADATA_PATH=$METADATA_PATH args=$*"
+echo "ENTRYPOINT: PORT=$PORT CONFIG_PATH=$CONFIG_PATH METADATA_PATH=$METADATA_PATH"
 mkdir -p "$CONFIG_PATH" "$METADATA_PATH"
-ls -la /app/dist-server/index.js || true
 
-exec "$@"
+# Exec the upstream server directly (do not rely on inherited CMD — Railway
+# may clear it). Pinned to the upstream image's start command for v2.37.1.
+exec node /app/dist-server/index.js
