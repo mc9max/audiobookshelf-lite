@@ -26,10 +26,12 @@ FROM ghcr.io/advplyr/audiobookshelf:2.37.1@sha256:581d68b2a6fc7ebf58d81c878a9f38
 
 USER root
 
-# Single Railway volume at /data holds the app config (SQLite DB) and the
-# metadata dir (covers, cache) so libraries survive redeploys and restarts.
+#   * Upstream defaults to serving the client under ROUTER_BASE_PATH
+#     "/audiobookshelf" — the wrapper sets ROUTER_BASE_PATH=/ so the app
+#     serves from the domain root (and the "/" healthcheck hits the app).
 ENV CONFIG_PATH=/data/config
 ENV METADATA_PATH=/data/metadata
+ENV ROUTER_BASE_PATH=/
 
 COPY --chmod=0755 docker-entrypoint.sh /usr/local/bin/railway-entrypoint.sh
 
